@@ -43,9 +43,11 @@ extern "C" {
  */
 struct rebinding {
   const char *name;
-  void *replacement;
-  void **replaced;
+  void *replacement; // 替换的函数
+  void **replaced;   // 被替换的函数
 };
+// 示例:
+// rebind_symbols((struct rebinding[2]){{"close", my_close, (void *)&orig_close}, {"open", my_open, (void *)&orig_open}}, 2);
 
 /*
  * For each rebinding in rebindings, rebinds references to external, indirect
